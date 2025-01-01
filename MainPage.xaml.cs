@@ -1,4 +1,6 @@
-﻿namespace vs_iAPI
+﻿using System.Reflection.Metadata;
+
+namespace vs_iAPI
 {
     public partial class MainPage : ContentPage
     {
@@ -9,21 +11,28 @@
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
-
         private void nameCompleted(object sender, EventArgs e)
         {
-            return;
+            doTextHide(entryName, checkName);
+        }
+
+        private void keyCompleted(object sender, EventArgs e)
+        {
+            doTextHide(entryKey, checkKey);
+        }
+
+        private void doTextHide(Entry textbox, CheckBox checkbox)
+        {
+            if (textbox.Text.Trim() != "")
+            {
+                checkbox.IsChecked = true;
+                textbox.IsPassword = true;
+            }
+            else
+            {
+                checkbox.IsChecked = false;
+                textbox.IsPassword = true;
+            }
         }
     }
 
