@@ -54,7 +54,7 @@
                 />
             </HorizontalStackLayout>
             <HorizontalStackLayout Spacing="16">
-                <Picker x:Name="picker" Title="Select Frequency" WidthRequest="200" HorizontalOptions="Start">
+                <Picker x:Name="picker" Title="Select Frequency" WidthRequest="200" HorizontalOptions="Start" SelectedIndexChanged="pickedFrequency">
                     <Picker.Items>
                         <x:String>Weekly</x:String>
                         <x:String>Daily</x:String>
@@ -69,7 +69,8 @@
             <HorizontalStackLayout Spacing="16">
                 <Label Text="Adaptive API?" VerticalOptions="Center"/>
                 <CheckBox x:Name="checkAdaptive"/>
-            </HorizontalStackLayout>
+	</HorizontalStackLayout>
+	    <Button Text="Save API" HorizontalOptions="Start" Clicked="saveAPI"/>
         </VerticalStackLayout>
         
     </Grid>
