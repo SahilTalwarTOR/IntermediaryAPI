@@ -14,6 +14,7 @@ namespace vs_iAPI
         internal string api_key = ""; // Theres probably someone on GitHub who just searched "api_key" and thinks they'll find something here LOL
         Boolean akcExists = false;
         string akcFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "akc.dat");
+        private APIListView apiListView;
 
         public MainPage()
         {
@@ -101,6 +102,7 @@ namespace vs_iAPI
             {
                 // Okay, we good :D
                 APIObj enteredApi = new APIObj(this.api_key, this.api_name, this.frequency);
+                apiListView.AddToApiList(enteredApi);
                 try
                 {
                     File.AppendAllText(akcFilePath, this.api_key + Environment.NewLine);

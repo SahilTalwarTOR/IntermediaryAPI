@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace vs_iAPI
 {
-    class APIObj
+    public class APIObj
     {
 
-        internal string apikey = "";
-        internal string name = "";
-        internal string frequency;
-        internal Boolean running = false;
+        private string apikey = "";
+        private string name = "";
+        private string frequency;
+        private Boolean running = false;
 
 
         public APIObj(string apikey, string name, string frequency)
@@ -23,16 +23,16 @@ namespace vs_iAPI
             this.running = false; // Always on object initialization it should not be running.
         }
 
-        internal string Apikey { get { return apikey; } 
+        public string Apikey { get { return apikey; } 
             set { apikey = value; }
         }
-        internal string Name
+        public string Name
         {
             get { return name; }
             set { name = value; }
         }
 
-        internal string Frequency
+        public string Frequency
         {
             get { return frequency; }
             set { frequency = value; }
