@@ -12,4 +12,9 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
+    <ShellContent
+    Title="Manage APIs"
+    ContentTemplate="{DataTemplate local:APIListView}"
+    Route="APIListView" />
+
 </Shell>
