@@ -13,6 +13,7 @@ namespace vs_iAPI
         string api_name = "";
         internal string api_key = ""; // Theres probably someone on GitHub who just searched "api_key" and thinks they'll find something here LOL
         Boolean akcExists = false;
+        string akcFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "akc.dat");
 
         public MainPage()
         {
@@ -23,16 +24,21 @@ namespace vs_iAPI
                 string appDataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 if (File.Exists(appDataDirectory + "/akc.dat"))
                 {
-                    akcExists = true;
+                    this.akcExists = true;
                 }
                 else
                 {
-                    akcExists = false;
+                    this.akcExists = false;
                     File.Create(Path.Combine(appDataDirectory, "akc.dat"));
                     // The file exists, so we'll probablyyy have to load it. We'll do that later on
 
                 }
             }
+        }
+
+        private void InitializeList()
+        {
+            // On the load of the program, we need to actually also initialize the list of APIs
         }
 
         private void nameCompleted(object sender, EventArgs e)
@@ -74,11 +80,13 @@ namespace vs_iAPI
         }
 
 	private void saveAPI(Object sender, EventArgs e) {
-		// We'll do some of the data-saving here, it's going to be quite a function..
-        // We have important variables to use!
+            // We'll do some of the data-saving here, it's going to be quite a function..
+            // We have important variables to use!
+
+            saveCheck();
 	}
 
-        private void saveCheck(Object sender, EventArgs e)
+        private async void saveCheck()
         {
             // Variables to check
             string localApi = this.api_key.Trim();
@@ -97,6 +105,14 @@ namespace vs_iAPI
             {
                 // Okay, we good :D
                 APIObj enteredApi = new APIObj(this.api_key, this.api_name, this.frequency);
+                try
+                {
+                    File.AppendAllText(akcFilePath, this.api_key + Environment.NewLine);
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error Occured Saving API", "An error occured saving the API\nCheck if akc.dat exists in AppData", "OK");
+                }
             }
         }
 	
