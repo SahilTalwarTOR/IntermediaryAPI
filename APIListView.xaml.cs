@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 public partial class APIListView : ContentPage
 {
-	public APIVewModel apiView = new APIVewModel();
+	public static APIVewModel apiView = new APIVewModel();
 	public APIListView()
 	{
 		InitializeComponent();
@@ -12,13 +12,13 @@ public partial class APIListView : ContentPage
         BindingContext = apiView;
        
 
-        Debug.WriteLine(this.apiView.Api_List.LongCount());
+        Debug.WriteLine(apiView.Api_List.LongCount());
 
 	}
 
 	public void AddToApiList(APIObj api)
 	{
-		this.apiView.Api_List.Add(api);
+		apiView.Api_List.Add(api);
 	}
 
 
