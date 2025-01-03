@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="vs_iAPI.MainPage">
+             x:Class="vs_iAPI.MainPage"
+             Title="iAPI Setup">
 
-    <Grid>
+    <Grid BackgroundColor="#191716">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -19,17 +20,18 @@
                Grid.Row="0"
                Grid.Column="1"
                HorizontalTextAlignment="Center"
-               FontSize="32"
+               VerticalTextAlignment="Center"
+               FontSize="48"
               />
 
-        <VerticalStackLayout Grid.Row="0" Padding="24" Spacing="16">
+        <VerticalStackLayout Grid.Row="1" Padding="24" Spacing="16" Grid.Column="1" HorizontalOptions="Center">
             <HorizontalStackLayout Spacing="16">
                 <Entry x:Name="entryName"
                 Placeholder="Enter your API Name"
                 Completed="nameCompleted"
                 Style="{StaticResource Headline}"
                 WidthRequest="200"
-                HorizontalOptions="Start"
+                HorizontalOptions="Center"
                 HeightRequest="8"
                 FontSize="14"
                 FontAttributes="Bold"
@@ -44,7 +46,7 @@
                 Completed="keyCompleted"
                 Style="{StaticResource Headline}"
                 WidthRequest="200"
-                HorizontalOptions="Start"
+                HorizontalOptions="Center"
                 HeightRequest="8"
                 FontSize="14"
                 FontAttributes="Bold"
@@ -65,12 +67,12 @@
                 <CheckBox x:Name="checkSelect" IsEnabled="False"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="1" Padding="24" Spacing="16">
-            <HorizontalStackLayout Spacing="16">
+        <VerticalStackLayout Grid.Row="2" Padding="12" Spacing="16" Grid.Column="1">
+            <HorizontalStackLayout Spacing="16" MaximumWidthRequest="152">
                 <Label Text="Adaptive API?" VerticalOptions="Center"/>
                 <CheckBox x:Name="checkAdaptive"/>
 	</HorizontalStackLayout>
-	    <Button Text="Save API" HorizontalOptions="Start" Clicked="saveAPI"/>
+	    <Button Text="Save API" HorizontalOptions="Center" Clicked="saveAPI"/>
         </VerticalStackLayout>
         
     </Grid>
